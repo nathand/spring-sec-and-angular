@@ -12,10 +12,17 @@ angular.module('hello', [ 'ngRoute' ])
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
   })
+  /*
   .controller('home', function($scope, $http) {
     $http.get('/resource/').success(function(data) {
       $scope.greeting = data;
     })
+  })
+  */
+  .controller('home', function($scope, $http) {
+	  $http.get('http://localhost:9000/').success(function(data) {
+		  $scope.greeting = data;
+	  })
   })
   .controller('navigation',
     function($rootScope, $scope, $http, $location) {
