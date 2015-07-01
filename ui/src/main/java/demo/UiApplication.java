@@ -37,6 +37,7 @@ import org.springframework.web.util.WebUtils;
 @SpringBootApplication
 @RestController
 @EnableZuulProxy
+@EnableRedisHttpSession
 public class UiApplication {
 
   @RequestMapping("/resource")
