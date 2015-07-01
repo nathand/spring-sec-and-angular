@@ -2,6 +2,7 @@ package demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.security.oauth2.resource.EnableOAuth2Resource
 import org.springframework.context.annotation.Bean;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.web.http.HeaderHttpSessionStrategy;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-@EnableRedisHttpSession
+@EnableOAuth2Resource
 class ResourceApplication {
 
   @RequestMapping('/')
@@ -20,16 +21,5 @@ class ResourceApplication {
 
   static void main(String[] args) {
     SpringApplication.run ResourceApplication, args
-  }
-
-  @Bean
-  HeaderHttpSessionStrategy sessionStrategy() {
-    new HeaderHttpSessionStrategy();
-  }
-
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http.httpBasic().disable()
-    http.authorizeRequests().anyRequest().authenticated()
   }
 }
